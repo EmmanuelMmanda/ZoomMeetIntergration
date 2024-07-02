@@ -29,16 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Prepare meeting data
-        // $meetingData = [
-        //     'topic' => $topic,
-        //     'start_date' => $scheduled_at,
-        //     'duration' => $duration,
-        //     'password' => $password
-        // ];
+        $meetingData = [
+            'topic' => $topic,
+            'start_date' => $scheduled_at,
+            'duration' => $duration,
+            'password' => $password
+        ];
 
         // Create the meeting using the Zoom API
-        // $meetingEndpoint = $zoom->meetings();
-        // $meetingDetails = $meetingEndpoint->create($myMeetingEmail, $meetingData);
+        $meetingEndpoint = $zoom->meetings();
+        $meetingDetails = $meetingEndpoint->create($myMeetingEmail, $meetingData);
 
         // // Debug: Print the response from the Zoom API
         // echo "Meeting Created: <pre>";
@@ -47,25 +47,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         
         // Extract necessary data from the associative array
-        // $meeting_id = $meetingDetails['id'];
-        // $join_url = $meetingDetails['join_url'];
-        // $start_url = $meetingDetails['start_url'];
+        $meeting_id = $meetingDetails['id'];
+        $join_url = $meetingDetails['join_url'];
+        $start_url = $meetingDetails['start_url'];
 
         // // Insert session into the database
-        // $stmt = $conn->prepare("INSERT INTO LiveSessions (course_id, meeting_id, topic, start_url, join_url, scheduled_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        // $stmt->bind_param("isssssi", $course_id, $meeting_id, $topic, $start_url, $join_url, $scheduled_at, $duration);
+        $stmt = $conn->prepare("INSERT INTO LiveSessions (course_id, meeting_id, topic, start_url, join_url, scheduled_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssssi", $course_id, $meeting_id, $topic, $start_url, $join_url, $scheduled_at, $duration);
 
-        // if ($stmt->execute()) {
+        if ($stmt->execute()) {
             //send email to all student in the scheduledclas using there emails ..
             $emailService = new EmailService($conn);
-            $emailService->sendEmail($meetingid=00001,$topic="Now", $join_url="https://localhsot.com//", $scheduled_at="7:90", $duration="20",$course_id="1");
+            $emailService->sendEmail($password,$meeting_id,$topic, $join_url, $scheduled_at, $duration,$course_id);
 
             // redirect to sessions
-            // header("Location: ../instructor/view_sessions.php");
+            header("Location: ../instructor/view_sessions.php?success=Live session created successfully!");
             echo "<div class='alert alert-success mt-3'>Live session created successfully!</div>";
-        // } else {
-        //     echo "<div class='alert alert-danger mt-3'>Error: " . $stmt->error . "</div>";
-        // }
+        } else {
+            echo "<div class='alert alert-danger mt-3'>Error: " . $stmt->error . "</div>";
+        }
 
         $stmt->close();
     } catch (Exception $e) {

@@ -40,6 +40,12 @@ $result = $stmt->get_result();
 
 <body>
     <div class="container mt-5">
+        <p class="alert alert-success">
+            <?php if($_GET['success']) {
+                echo 'Zoom Live Session was Created and Schedule Emails Send to Participants';
+            }
+            ?>
+        </p>
         <h2>Live Sessions</h2>
         <a href="./create_session.php" class="btn btn-primary">Create New </a>
         <?php if ($result->num_rows > 0): ?>

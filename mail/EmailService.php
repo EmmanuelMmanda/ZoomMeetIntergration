@@ -29,7 +29,7 @@ class EmailService
         $this->mail->SMTPSecure = 'tls'; // Change this to 'ssl' or 'tls' based on your SMTP server configuration
     }
 
-    public function sendEmail($meetingid, $course, $joinLink, $scheduledAt, $duration, $course_id)
+    public function sendEmail($password,$meetingid, $course, $joinLink, $scheduledAt, $duration, $course_id)
     {
 
 
@@ -45,7 +45,7 @@ class EmailService
                 $this->mail->addAddress($recipient); // Add recipient email address
                 $this->mail->isHTML(true);
                 $this->mail->Subject = 'Zoom Meeting Schedule';
-                $this->mail->Body = $this->buildEmailBody($meetingid, $course, $joinLink, $scheduledAt, $duration);
+                $this->mail->Body = $this->buildEmailBody($password,$meetingid, $course, $joinLink, $scheduledAt, $duration);
                 $this->mail->send();
             }
             return $this->returnResponse(200, "Sent successfully! to -> " . json_encode($getRecipientEmails));
@@ -54,7 +54,7 @@ class EmailService
         }
     }
 
-    private function buildEmailBody($meetingid, $course, $joinLink, $scheduledAt, $duration)
+    private function buildEmailBody($password,$meetingid, $course, $joinLink, $scheduledAt, $duration)
     {
         return "
         <html>
@@ -91,9 +91,10 @@ class EmailService
             <div class=\"container\">
                 <h1>New Meeting Created!</h1>
                 <br>
-                <p><strong>Meeting ID:</strong> " . htmlspecialchars($meetingid) . "</p>
                 <p><strong>Course:</strong> " . htmlspecialchars($course) . "</p>
+                <p><strong>Meeting ID:</strong> " . htmlspecialchars($meetingid) . "</p>
                 <p><strong>Join Link:</strong> <a href=\"" . htmlspecialchars($joinLink) . "\">" . htmlspecialchars($joinLink) . "</a></p>
+                <p><strong>Meeting Password:</strong> " . htmlspecialchars($password) . "</p>
                 <p><strong>Scheduled at:</strong> " . htmlspecialchars($scheduledAt) . "</p>
                 <p><strong>Duration:</strong> " . htmlspecialchars($duration) . "</p>
             </div>
