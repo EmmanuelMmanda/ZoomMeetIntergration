@@ -96,7 +96,7 @@ class EmailService
                 <p><strong>Join Link:</strong> <a href=\"" . htmlspecialchars($joinLink) . "\">" . htmlspecialchars($joinLink) . "</a></p>
                 <p><strong>Meeting Password:</strong> " . htmlspecialchars($password) . "</p>
                 <p><strong>Scheduled at:</strong> " . htmlspecialchars($scheduledAt) . "</p>
-                <p><strong>Duration:</strong> " . htmlspecialchars($duration) . "</p>
+                <p><strong>Duration:</strong> " . htmlspecialchars($duration) . " Mins</p>
             </div>
         </body>
         </html>
