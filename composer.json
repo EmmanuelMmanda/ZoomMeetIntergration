@@ -1,0 +1,19 @@
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./vendor/zoom-api-php-client"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ZoomApiClient\\": "vendor/zoom-api-php-client/src/",
+            "UDX\\Zoom\\": "vendor/zoom-api-php-client/src/"
+            
+        }
+    },
+    "require": {
+        "usabilitydynamics/zoom-api-php-client": "dev-main",
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

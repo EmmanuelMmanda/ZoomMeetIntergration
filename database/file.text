@@ -1,0 +1,38 @@
+/online-bootcamp
+|-- /admin
+|   |-- index.php
+|   |-- manage_users.php
+|   |-- create_instructor.php
+|
+|-- /instructor
+|   |-- index.php
+|   |-- create_course.php
+|   |-- create_exam.php
+|   |-- create_session.php
+|   |-- add_resource.php
+|   |-- view_students.php
+|
+|-- /student
+|   |-- index.php
+|   |-- register.php
+|   |-- enroll_course.php
+|   |-- view_resources.php
+|   |-- take_exam.php
+|   |-- view_results.php
+|   |-- join_session.php
+|
+|-- /includes
+|   |-- db.php
+|   |-- header.php
+|   |-- footer.php
+|
+|-- /assets
+|   |-- /css
+|   |   |-- style.css
+|   |-- /js
+|   |   |-- script.js
+|
+|-- index.php
+|-- login.php
+|-- logout.php
+|-- register.php

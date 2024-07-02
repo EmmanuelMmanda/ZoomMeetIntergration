@@ -1,0 +1,31 @@
+{
+    "name": "usabilitydynamics/zoom-api-php-client",
+    "description": "Zoom.us API v2 client for PHP",
+    "type": "library",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Anton Korotkov",
+            "email": "anton@udx.io"
+        },
+        {
+            "name": "Vladimir Palant",
+            "email": "vladimir@udx.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "~7.0",
+        "firebase/php-jwt": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "UDX\\Zoom\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

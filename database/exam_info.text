@@ -1,0 +1,40 @@
+To develop the `instructor\create_exam.php` functionality, you'll need several files:
+
+1. **create_exam.php**: This is the main PHP file where the instructor will create the exam, add questions, set the duration, and schedule it.
+   
+2. **add_question.php**: This PHP file will handle the AJAX request to add questions dynamically to the exam form.
+   
+3. **submit_exam.php**: This PHP file will handle the submission of the exam, save the answers, and calculate the score.
+   
+4. **view_results.php**: This PHP file will allow the instructor to view the results of the exam.
+
+Here's a breakdown of the required functionalities and the respective files:
+
+1. **create_exam.php**:
+   - Allow the instructor to input exam title, description, scheduled date, duration, and questions.
+   - Dynamically add questions using JavaScript/AJAX.
+   - Send the exam details along with questions to the server for processing.
+   - Store exam details in the `Exams` table and questions in the `Questions` table.
+   
+2. **add_question.php**:
+   - Receive AJAX request to add a new question to the exam.
+   - Insert the question into the database and return the response (question ID) to the main page.
+   
+3. **submit_exam.php**:
+   - Receive the submitted exam answers from the student.
+   - Validate and save the answers in the `Answers` table.
+   - Calculate the score and store it in the database.
+   - Handle exam submission based on the set duration.
+   
+4. **view_results.php**:
+   - Retrieve and display the exam results for the instructor.
+   - Show the scores of each student who attempted the exam.
+   - Allow the instructor to view detailed answers and review the exam.
+
+Additional considerations:
+- Use session management to prevent students from retaking the exam.
+- Implement client-side restrictions to prevent page navigation during the exam.
+- Use server-side validation to ensure that the exam is submitted automatically when the time limit is reached.
+- Implement JavaScript timers to display the remaining time for the exam.
+
+Let me know which part you'd like to start with, and I can provide more detailed guidance or code snippets for that specific functionality.
